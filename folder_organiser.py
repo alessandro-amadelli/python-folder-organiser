@@ -32,9 +32,6 @@ def get_file_names():
     """
     This function returns a list containing full pathname of each file present in the 'Misc' folder
     """
-
-    print("Perusing your files...")
-
     current_dir = os.getcwd() #current directory
     misc_dir = os.path.join(os.getcwd(), 'Misc')
 
@@ -42,9 +39,9 @@ def get_file_names():
     if not os.path.isdir(misc_dir):
         os.mkdir(misc_dir)
 
-
+    #List of all files in the 'Misc' folder
+    #Each element in the list is a set containing full file path and filename
     file_list = [(os.path.join(misc_dir,file), file) for file in os.listdir(misc_dir) if os.path.isfile(os.path.join(misc_dir, file))]
-
 
     return file_list
 
@@ -53,7 +50,6 @@ def organise_file(filepath, filename):
     """
     Given a file path and name, this function checks the file extension and moves the file to the corresponding folder
     """
-
     file, extension = os.path.splitext(filename)
 
     destination_folder = ""
@@ -81,14 +77,19 @@ def organise_file(filepath, filename):
 
 
 if __name__ == "__main__":
+    """
+    Main execution
+    """
+    print("Perusing your files...")
     file_list = get_file_names()
 
-    file_tot = len(file_list)
+    file_tot = len(file_list) #Total number of files in 'Misc'
 
     print("Moving files around...")
 
     folders = {}
 
+    #for loop to move each file and save the counter for final stats
     for f in file_list:
         folder = organise_file(f[0], f[1])
         if folder in folders.keys():
@@ -98,11 +99,11 @@ if __name__ == "__main__":
 
     print("Finished!")
 
-    #Final Statistics
+    #Final Stats
     print(f"Processed a total of {file_tot} files")
     for f in folders:
         if f != "passed":
-            print(f"# {folders[f]} file(s) moved in folder {f}")
+            print(f" # {folders[f]} file(s) moved in folder {f}")
 
     if "passed" in folders.keys():
-        print(f"# {folders['passed']} file(s) left unmoved...")
+        print(f" # {folders['passed']} file(s) left unmoved...")
