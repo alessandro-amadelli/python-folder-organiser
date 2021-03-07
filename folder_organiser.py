@@ -8,7 +8,7 @@ Author: Ama
 """
 import os
 
-#JSON object containing all folder names and relative file extensions
+#python dictionary containing all folder names and relative file extensions
 FOLDER_TYPES = {
     "Music": [
     '.mp3', '.m4a', '.flac', '.wav', '.wma', '.aac'
@@ -48,6 +48,7 @@ def get_file_names():
 
     return file_list
 
+
 def organise_file(filepath, filename):
     """
     Given a file path and name, this function checks the file extension and moves the file to the corresponding folder
@@ -79,10 +80,8 @@ def organise_file(filepath, filename):
     return destination_folder
 
 
-
 if __name__ == "__main__":
     file_list = get_file_names()
-    #print(file_list)
 
     file_tot = len(file_list)
 
@@ -98,8 +97,8 @@ if __name__ == "__main__":
             folders[folder] = 1
 
     print("Finished!")
-    #Final Statistics
 
+    #Final Statistics
     print(f"Processed a total of {file_tot} files")
     for f in folders:
         if f != "passed":
