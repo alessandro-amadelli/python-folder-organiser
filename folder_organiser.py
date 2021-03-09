@@ -7,6 +7,8 @@ on their extensions.
 Author: Ama
 """
 import os
+import sys
+import time
 
 #python dictionary containing all folder names and relative file extensions
 FOLDER_TYPES = {
@@ -27,6 +29,34 @@ FOLDER_TYPES = {
     ]
 }
 
+
+def logo_print():
+    print("\n\n")
+    print("=" * 40)
+    print(" ****  *   *  *****  *  *   ***   *   *")
+    time.sleep(0.2)
+    print(" *  *   * *     *    *  *  *   *  **  *")
+    time.sleep(0.2)
+    print(" ****    *      *    ****  *   *  * * *")
+    time.sleep(0.2)
+    print(" *       *      *    *  *  *   *  *  **")
+    time.sleep(0.2)
+    print(" *       *      *    *  *   ***   *   *")
+    time.sleep(0.2)
+    print(" " + "-" * 38)
+    time.sleep(0.3)
+    print(" F O L D E R          O R G A N I S E R")
+    print("=" * 40)
+    print("\n\n")
+    time.sleep(0.3)
+
+def show_instructions():
+    print("INSTRUCTIONS")
+    print("1. Create a folder named 'Misc' in the same directory as the script \n" \
+    "(or just run the program the first time and the folder will be created for you)")
+    print("2. Put all the files you want to organise inside the 'Misc' folder")
+    print("3. Execute the script")
+    print("4. Enjoy the tidy result\n")
 
 def get_file_names():
     """
@@ -80,6 +110,28 @@ if __name__ == "__main__":
     """
     Main execution
     """
+    #Logo print
+    logo_print()
+
+    #Asking user input
+    print("Choose an option")
+    while True:
+        print("\n")
+        print("i - See Instructions")
+        print("o - Organise files in folder 'Misc'")
+        print("q - Quit program")
+        usr_option = input("option: ").lower()
+        if usr_option == "q":
+            sys.exit()
+        elif usr_option == "i":
+            show_instructions()
+            time.sleep(0.3)
+            print("Choose an option")
+        elif usr_option == "o":
+            break
+        else:
+            print("Wrong choice...please select one of the following options:")
+
     print("Perusing your files...")
     file_list = get_file_names()
 
@@ -100,10 +152,19 @@ if __name__ == "__main__":
     print("Finished!")
 
     #Final Stats
+    print("=" * 11)
+    print(" S T A T S")
+    print("=" * 11)
+    time.sleep(0.2)
     print(f"Processed a total of {file_tot} files")
     for f in folders:
         if f != "passed":
+            time.sleep(0.2)
             print(f" # {folders[f]} file(s) moved in folder {f}")
 
     if "passed" in folders.keys():
-        print(f" # {folders['passed']} file(s) left unmoved...")
+        time.sleep(0.2)
+        print(f"WARNING! # {folders['passed']} file(s) left unmoved...")
+
+    time.sleep(0.2)
+    print("\nBye! :)\n")

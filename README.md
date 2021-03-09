@@ -4,7 +4,7 @@
 
 ## Instructions
 1. Create a folder named 'Misc' in the same directory as the script (or just run the program the first time and the folder will be created for you)
-2. Put all the files you want to organise inside the new 'Misc' folder
+2. Put all the files you want to organise inside the 'Misc' folder
 3. Execute the script
 4. Enjoy the tidy result
 
